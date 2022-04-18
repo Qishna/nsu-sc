@@ -1,2 +1,2 @@
 # nsu-sc
-Homeworks from NSU Supercomputers course
+Homeworks from NSU Supercomputing course
