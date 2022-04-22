@@ -1,4 +1,4 @@
-# nsu-sc
+# Supercomputing
 Homeworks from NSU Supercomputing course
 
 ### Course map
