@@ -2,7 +2,7 @@
 #include <chrono>
 #include <mutex>
 #include <thread>
-#include "ThreadPool.cpp"
+#include "ThreadPool.h"
 
 void initScene(Scene &scene) {
     Color red{1, 0.2, 0.2};
@@ -43,13 +43,14 @@ void initScene(Scene &scene) {
     scene.setRecursionLimit(20);
 
     scene.setCamera(Camera{{0, 0, -20},
-                           {0, 0, 0}});}
+                           {0, 0, 0}});
+}
 
 
 int main(int argc, char **argv) {
     int num_threads = (argc > 1 ? std::stoi(argv[1]) : 1);
-    int viewPlaneResolutionX = 1920;
-    int viewPlaneResolutionY = 1080;
+    int viewPlaneResolutionX = 2048;
+    int viewPlaneResolutionY = 1152;
     int numOfSamples = 10;
     Scene scene;
     initScene(scene);
@@ -65,7 +66,10 @@ int main(int argc, char **argv) {
 
     ViewPlane viewPlane{viewPlaneResolutionX, viewPlaneResolutionY,
                         viewPlaneSizeX, viewPlaneSizeY, viewPlaneDistance};
-    Image image(viewPlaneResolutionX, viewPlaneResolutionY); 
+
+    Image image(viewPlaneResolutionX, viewPlaneResolutionY);
+
+
 
     ThreadPool pool(num_threads);
     for (int x = 0; x < viewPlaneResolutionX; x++) {
